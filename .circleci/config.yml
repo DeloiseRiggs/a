@@ -19,13 +19,17 @@ jobs:
     parallelism: 4   
     steps:
       - checkout
-
+  endvoc1:
+    <<: *script
+    docker:
+      - image: circleci/elixir:1.7.2
+    parallelism: 4   
 workflows:
   version: 2
   commit:
     jobs:
       - endvoc
-
+      - endvoc1
 
 
     triggers:
@@ -39,3 +43,4 @@ workflows:
   endvocrunjob:
     jobs:
       - endvoc
+      - endvoc1
